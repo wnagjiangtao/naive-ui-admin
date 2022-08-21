@@ -2,6 +2,10 @@ import { createApp } from 'vue'
 import '@/style/index.css';
 import App from './App.vue'
 
+import {setupNaive} from './plugins/navie'
 
+const app = createApp(App)
 
-createApp(App).mount('#app')
+setupNaive(app)
+
+app.mount('#app')
