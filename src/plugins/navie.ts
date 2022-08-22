@@ -6,6 +6,10 @@ import {
   // component
   NButton,
   NSpace,
+  NConfigProvider,
+  NCard,
+  NLoadingBarProvider,
+  NNotificationProvider,
 
 } from 'naive-ui'
 
@@ -13,7 +17,10 @@ const naive = create({
   components: [
     NButton,
     NSpace,
-
+    NConfigProvider,
+    NCard,
+    NLoadingBarProvider,
+    NNotificationProvider,
   ]
 })
 

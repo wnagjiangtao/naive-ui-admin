@@ -1,32 +1,54 @@
+<template>
+  <n-config-provider 
+  :locale="zhCN"
+  :date-locale = "dateZhCN"
+  :theme="getDarkTheme"
+  :theme-overrides="getThemeOverrides"
+  >
+      <!-- <router-view/> -->
+
+  <AppProvider>
+    
+  </AppProvider>
+  </n-config-provider>
+</template>
+
 <script setup lang="ts">
+import {computed, ref} from 'vue'
+import { zhCN,dateZhCN, darkTheme} from 'naive-ui'
+import {useDesignSettingWithOut} from './store/modules/designSetting'
+
+import {AppProvider} from './components/Application/index'
+
+
+
+
+const designStore = useDesignSettingWithOut()
+
+const getDarkTheme = computed(()=>{
+  designStore.getDarkTheme?  darkTheme: null
+})
+
+const getThemeOverrides = computed(()=>{
+  const appTheme = designStore.appTheme
+
+  // const lightenStr = 
+  return {
+      common: {
+        primaryColor: 'appTheme'
+    }
+  }
+
+})
+
+
+
+
+
+
 
 </script>
 
-<template>
-  <h1 class="text-9xl text-center text-blue-600"> hello world</h1>
-
-    <n-space>
-    <n-button>Default</n-button>
-    <n-button type="tertiary">
-      Tertiary
-    </n-button>
-    <n-button type="primary">
-      Primary
-    </n-button>
-    <n-button type="info">
-      Info
-    </n-button>
-    <n-button type="success">
-      Success
-    </n-button>
-    <n-button type="warning">
-      Warning
-    </n-button>
-    <n-button type="error">
-      Error
-    </n-button>
-  </n-space>
-</template>
 
 <style scoped>
 
